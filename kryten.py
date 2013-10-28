@@ -127,6 +127,9 @@ CORRECTIONS = {'web2py':'web-2-pie',
 regex_shell = re.compile('^[\w/]+\s*(?![,\=\[\(\:])')
 
 def is_shell_command(command):
+    # restrict shell command to start with '>'
+    if not command.startswith('>'): return False
+    return True
     PYCOMMANDS = ('for','if','def','class','elif','else','pass','try','except','finally','from','import','print','raise','del','while','with','lambda','and','or','conitnue','break','yield','as','assert','exec','is','global','not')
     if command[:1] in ('/','.','~','$'): return True
     return regex_shell.match(command) and not command.split(' ')[0] in PYCOMMANDS
@@ -508,7 +511,7 @@ def actor(command,code,history,options):
         raise RuntimeError
     elif is_shell_command(command):
         ocommand = command
-        if meta.startswith('$'): command=command[1:]
+        command=command[1:]
         proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         if not command.endswith('&'):
             output = proc.communicate()[0]
@@ -584,7 +587,7 @@ def typist(command,code,history,options):
         history.append(('@@UPDATE@@ %s' % filename,code))
     elif is_shell_command(command):
         ocommand = command
-        if meta.startswith('$'): command=command[1:]
+        command=command[1:]
         proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
         if not command.endswith('&'):
             output = proc.communicate()[0]

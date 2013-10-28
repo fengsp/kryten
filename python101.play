@@ -1,4 +1,4 @@
-$ clear
+> clear
 # Python is a general-purpose high-level programming language.
 # It is very easy to learn
 
@@ -145,7 +145,7 @@ if x<0.5:
 
 # for a more complex example let us write a program
 # to factorize a random input number
-rm tmp_*.py
+> rm tmp_*.py
 @@UPDATE@@ tmp_factorize.py
 # we import two modules
 import random
@@ -171,7 +171,7 @@ while y <= x:
 @@END@@
 
 # now we run the program
-python tmp_factorize.py
+> python tmp_factorize.py
 
 # Python throws exceptions on error.
 @@UPDATE@@ tmp_exceptions.py
@@ -180,7 +180,7 @@ if True:
         print 1/(i-2)
 @@END@@
 
-python tmp_exceptions.py
+> python tmp_exceptions.py
 
 # exceptions can be caught
 
@@ -196,7 +196,7 @@ finally:
     print 'cleanup code goes here'
 @@END@@
 
-python tmp_exceptions.py
+> python tmp_exceptions.py
 
 # functions are very easy in Python
 def f(a):
@@ -293,7 +293,7 @@ b = C(4,5)
 print b
 @@END@@
 
-python tmp_class.py
+> python tmp_class.py
 
 # __init__ is not the only special method. there are more for example
 
@@ -319,7 +319,7 @@ c = a.__add__(b)
 print c.getxy()
 @@END@@
 
-python tmp_class.py
+> python tmp_class.py
 
 # Python is very handy to handle files
 # we can create a file for writing
@@ -388,7 +388,7 @@ a.x = 6
 pickle.dump(a,open('tmp_pickle.pickle','wb'))
 @@END@@
 
-python tmp_pickle.py
+> python tmp_pickle.py
 
 # pickled data be de-serialized
 @@UPDATE@@ tmp_pickle.py
@@ -399,7 +399,7 @@ b = pickle.load(open('tmp_pickle.pickle','rb'))
 print b.x
 @@END@@ 
 
-python tmp_pickle.py
+> python tmp_pickle.py
 
 # the time module is useful to waste some time
 import time
